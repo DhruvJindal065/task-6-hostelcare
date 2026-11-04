@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Login | HostelCare</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="header"><nav class="navbar container"><a href="index.html" class="logo">Hostel<span>Care</span></a><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a class="nav-btn active-btn" href="login.html">Login</a></li></ul></nav></header>
+<main class="login-main"><div class="login-card"><div class="login-logo">🏠</div><p class="eyebrow">HOSTELCARE</p><h1>Welcome back</h1><p class="muted">Login to access the hostel service portal.</p>
+<form id="login-form" novalidate>
+<label for="email">Email / Username</label><input id="email" type="text" placeholder="Enter email or username" aria-describedby="email-error"><p class="field-error" id="email-error" aria-live="polite"></p>
+<label for="password">Password</label>
+<div class="password-wrap"><input id="password" type="password" placeholder="Enter password" aria-describedby="password-error"><button type="button" class="toggle-password" id="toggle-password" aria-label="Show password">Show</button></div>
+<p class="field-error" id="password-error" aria-live="polite"></p>
+<button class="btn primary full" type="submit">Login</button>
+<p class="form-status" id="login-status" hidden></p>
+</form>
+<p class="back-link"><a href="index.html">← Back to Home</a></p></div></main>
+<footer class="footer"><div class="copyright">© 2026 HostelCare · Dhruv Jindal · Roll No. 065 · Section D</div></footer>
+<script src="script.js" defer></script>
+</body></html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Contact | HostelCare</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="header"><nav class="navbar container"><a href="index.html" class="logo">Hostel<span>Care</span></a><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a class="active" href="contact.html">Contact</a></li><li><a class="nav-btn" href="login.html">Login</a></li></ul></nav></header>
+<main><section class="page-hero"><div class="container"><p class="eyebrow">SUPPORT</p><h1>Contact hostel service support</h1><p>Use the form below for service-related assistance.</p></div></section>
+<section class="section"><div class="container contact-grid"><div class="contact-info"><h2>Get in touch</h2><p class="muted">For plumbing, electricity and Internet/Wi-Fi assistance, contact the hostel support team.</p><div class="contact-item"><b>📧 Email</b><span>support@hostelcare.example</span></div><div class="contact-item"><b>📞 Phone</b><span>+91 00000 00000</span></div><div class="contact-item"><b>📍 Location</b><span>South Asian University Hostel</span></div></div>
+<div>
+<form class="form-card" id="contact-form" novalidate>
+<label for="name">Name</label><input id="name" type="text" placeholder="Enter your name" aria-describedby="name-error"><p class="field-error" id="name-error" aria-live="polite"></p>
+<label for="room">Room Number</label><input id="room" type="text" placeholder="Enter room number, e.g. A-204" aria-describedby="room-error"><p class="field-error" id="room-error" aria-live="polite"></p>
+<label for="service">Service</label><select id="service" aria-describedby="service-error"><option value="">Select a service</option><option>Plumbing</option><option>Electricity</option><option>Internet / Wi-Fi</option></select><p class="field-error" id="service-error" aria-live="polite"></p>
+<label for="message">Message</label><textarea id="message" rows="5" placeholder="Describe the service you need" aria-describedby="message-error"></textarea><p class="field-error" id="message-error" aria-live="polite"></p>
+<button class="btn primary" type="submit">Send Request</button>
+<p class="form-success" id="form-success" hidden></p>
+</form>
+
+<section class="requests-card" aria-labelledby="requests-title">
+<h2 id="requests-title">Your saved requests</h2>
+<p class="muted small-note">Requests are stored in this browser only.</p>
+<ul class="request-list" id="request-list"></ul>
+<p class="muted" id="request-empty">No requests yet. Submitted requests will appear here.</p>
+</section>
+</div>
+</div></section></main>
+<footer class="footer"><div class="container footer-grid"><div><a href="index.html" class="logo footer-logo">Hostel<span>Care</span></a><p>Essential hostel service support in one place.</p></div><div><h4>Student</h4><a href="services.html">Services</a><a href="about.html">About</a><a href="login.html">Login</a></div><div><h4>Project</h4><p>Dhruv Jindal</p><p>Roll No. 065 · Section D</p></div></div><div class="copyright">© 2026 HostelCare · Fundamentals of Web Development</div></footer>
+<script src="script.js" defer></script>
+</body></html>
