@@ -25,19 +25,9 @@
     .logo { font-size: 28px; font-weight: 800; color: #111827; }
     .logo span { color: #2563eb; }
     nav { display: flex; align-items: center; gap: 32px; }
-    nav a {
-      text-decoration: none;
-      color: #4b5563;
-      font-size: 18px;
-      font-weight: 600;
-    }
+    nav a { text-decoration: none; color: #4b5563; font-size: 18px; font-weight: 600; }
     nav a.active { color: #2563eb; }
-    nav a.login {
-      background: #2563eb;
-      color: #fff;
-      padding: 12px 26px;
-      border-radius: 8px;
-    }
+    nav a.login { background: #2563eb; color: #fff; padding: 12px 26px; border-radius: 8px; }
     main { flex: 1; padding: 48px 20px; }
     .card {
       background: #fff;
@@ -82,8 +72,8 @@
     #status {
       margin-top: 20px;
       padding: 16px;
-      background: #eef4ff;
-      color: #1e40af;
+      background: #e8f7ec;
+      color: #1e6b34;
       border-radius: 8px;
       font-weight: 600;
     }
@@ -118,6 +108,9 @@
       <p class="subtitle">Tell us about the issue in your hostel room or block.</p>
 
       <form id="complaintForm">
+        <label for="name">Name</label>
+        <input id="name" type="text" required>
+
         <label for="email">Email</label>
         <input id="email" type="email" required>
 
@@ -140,7 +133,7 @@
       </form>
 
       <div id="status" hidden>
-        Your complaint is registered and sent to the hostel management.
+        Your complaint has been saved and sent to the management.
       </div>
     </div>
   </main>
@@ -155,23 +148,40 @@
     import { getFirestore, collection, addDoc, serverTimestamp }
       from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    const db = getFirestore(initializeApp({
+    const firebaseConfig = {
       apiKey: "YOUR_API_KEY",
       authDomain: "your-project.firebaseapp.com",
       projectId: "your-project",
       appId: "YOUR_APP_ID"
-    }));
+    };
 
     const form = document.getElementById("complaintForm");
     const status = document.getElementById("status");
     const button = document.getElementById("submitBtn");
 
+    // Warn early if the Firebase values were never replaced
+    const configReady = !firebaseConfig.apiKey.startsWith("YOUR_");
+
+    let db = null;
+    if (configReady) {
+      db = getFirestore(initializeApp(firebaseConfig));
+    }
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+
+      if (!db) {
+        alert("Firebase is not set up yet. Replace the placeholder values in the script.");
+        return;
+      }
+
       button.disabled = true;
       button.textContent = "Submitting...";
+      status.hidden = true;
+
       try {
         await addDoc(collection(db, "complaints"), {
+          name: document.getElementById("name").value,
           email: document.getElementById("email").value,
           room: document.getElementById("room").value,
           category: document.getElementById("category").value,
@@ -181,7 +191,7 @@
         status.hidden = false;
         form.reset();
       } catch (err) {
-        alert("Could not send your complaint. Please try again.");
+        alert("Could not send your complaint: " + err.message);
         console.error(err);
       } finally {
         button.disabled = false;
