@@ -68,7 +68,6 @@
       cursor: pointer;
     }
     button[type="submit"]:hover { background: #1d4ed8; }
-    button[type="submit"]:disabled { background: #93c5fd; cursor: not-allowed; }
     #status {
       margin-top: 20px;
       padding: 16px;
@@ -129,11 +128,11 @@
         <label for="details">Complaint Details</label>
         <textarea id="details" required></textarea>
 
-        <button type="submit" id="submitBtn">Submit Complaint</button>
+        <button type="submit">Submit Complaint</button>
       </form>
 
       <div id="status" hidden>
-        Your complaint has been saved and sent to the management.
+        Your complaint has been registered and sent to the management.
       </div>
     </div>
   </main>
@@ -143,60 +142,14 @@
     <p>&copy; 2026 HostelCare. Student hostel services project.</p>
   </footer>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getFirestore, collection, addDoc, serverTimestamp }
-      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "your-project.firebaseapp.com",
-      projectId: "your-project",
-      appId: "YOUR_APP_ID"
-    };
-
+  <script>
     const form = document.getElementById("complaintForm");
     const status = document.getElementById("status");
-    const button = document.getElementById("submitBtn");
 
-    // Warn early if the Firebase values were never replaced
-    const configReady = !firebaseConfig.apiKey.startsWith("YOUR_");
-
-    let db = null;
-    if (configReady) {
-      db = getFirestore(initializeApp(firebaseConfig));
-    }
-
-    form.addEventListener("submit", async (e) => {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
-
-      if (!db) {
-        alert("Firebase is not set up yet. Replace the placeholder values in the script.");
-        return;
-      }
-
-      button.disabled = true;
-      button.textContent = "Submitting...";
-      status.hidden = true;
-
-      try {
-        await addDoc(collection(db, "complaints"), {
-          name: document.getElementById("name").value,
-          email: document.getElementById("email").value,
-          room: document.getElementById("room").value,
-          category: document.getElementById("category").value,
-          details: document.getElementById("details").value,
-          createdAt: serverTimestamp()
-        });
-        status.hidden = false;
-        form.reset();
-      } catch (err) {
-        alert("Could not send your complaint: " + err.message);
-        console.error(err);
-      } finally {
-        button.disabled = false;
-        button.textContent = "Submit Complaint";
-      }
+      status.hidden = false;
+      form.reset();
     });
   </script>
 
