@@ -59,3 +59,113 @@
     .pw-wrap input { padding-right: 70px; }
     .show-btn {
       position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #2563eb;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .login-btn {
+      width: 100%;
+      margin-top: 28px;
+      padding: 16px;
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .login-btn:hover { background: #1d4ed8; }
+    #status {
+      margin-top: 20px;
+      padding: 16px;
+      background: #eef4ff;
+      color: #1e40af;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    .back { display: block; text-align: center; margin-top: 24px; color: #2563eb; text-decoration: none; font-weight: 600; }
+    footer {
+      background: #111827;
+      color: #d1d5db;
+      padding: 40px 110px;
+      text-align: center;
+      font-size: 14px;
+    }
+    footer .logo { color: #fff; margin-bottom: 10px; font-size: 24px; }
+    footer .logo span { color: #60a5fa; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Hostel<span>Care</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="complaint.html">Register Complaint</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" class="login">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <div class="icon">🏠</div>
+      <div class="brand">HOSTELCARE</div>
+      <h1>Welcome back</h1>
+      <p class="subtitle">Login to access the hostel service portal.</p>
+
+      <form id="loginForm">
+        <label for="username">Email / Username</label>
+        <input id="username" type="text" required>
+
+        <label for="password">Password</label>
+        <div class="pw-wrap">
+          <input id="password" type="password" required>
+          <button type="button" class="show-btn" id="toggleBtn">Show</button>
+        </div>
+
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+
+      <div id="status" hidden>
+        You have been logged in to your account.
+      </div>
+
+      <a href="index.html" class="back">← Back to Home</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="logo">Hostel<span>Care</span></div>
+    <p>&copy; 2026 HostelCare. Student hostel services project.</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const status = document.getElementById("status");
+    const password = document.getElementById("password");
+    const toggleBtn = document.getElementById("toggleBtn");
+
+    toggleBtn.addEventListener("click", () => {
+      const showing = password.type === "text";
+      password.type = showing ? "password" : "text";
+      toggleBtn.textContent = showing ? "Show" : "Hide";
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      status.hidden = false;
+    });
+  </script>
+
+</body>
+</html>
