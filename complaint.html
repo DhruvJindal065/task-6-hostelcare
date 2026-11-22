@@ -8,7 +8,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #f5f7fb;
+      background: #f8fafc;
       color: #1f2937;
       min-height: 100vh;
       display: flex;
@@ -17,82 +17,85 @@
     header {
       background: #fff;
       border-bottom: 1px solid #e5e7eb;
-      padding: 16px 40px;
+      padding: 20px 110px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .logo { font-size: 24px; font-weight: bold; color: #111827; }
+    .logo { font-size: 28px; font-weight: 800; color: #111827; }
     .logo span { color: #2563eb; }
+    nav { display: flex; align-items: center; gap: 32px; }
     nav a {
-      margin-left: 24px;
       text-decoration: none;
       color: #4b5563;
+      font-size: 18px;
       font-weight: 600;
     }
     nav a.active { color: #2563eb; }
     nav a.login {
       background: #2563eb;
       color: #fff;
-      padding: 10px 20px;
+      padding: 12px 26px;
       border-radius: 8px;
     }
-    main { flex: 1; display: flex; justify-content: center; padding: 48px 20px; }
+    main { flex: 1; padding: 48px 20px; }
     .card {
       background: #fff;
-      width: 100%;
-      max-width: 720px;
-      padding: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 48px;
       border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     }
-    h1 { font-size: 28px; margin-bottom: 8px; }
-    .subtitle { color: #6b7280; margin-bottom: 28px; }
-    label { display: block; font-weight: 700; margin-bottom: 8px; margin-top: 20px; }
+    h1 { font-size: 30px; margin-bottom: 8px; }
+    .subtitle { color: #6b7280; margin-bottom: 24px; }
+    label { display: block; font-weight: 700; margin-bottom: 8px; margin-top: 22px; }
     input, select, textarea {
       width: 100%;
-      padding: 12px 14px;
+      padding: 14px;
       border: 1px solid #d1d5db;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 17px;
       font-family: inherit;
+      background: #fff;
     }
     input:focus, select:focus, textarea:focus {
       outline: none;
       border-color: #2563eb;
       box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
     }
-    textarea { resize: vertical; }
-    button {
+    textarea { resize: vertical; min-height: 160px; }
+    button[type="submit"] {
       width: 100%;
       margin-top: 28px;
-      padding: 14px;
+      padding: 16px;
       background: #2563eb;
       color: #fff;
       border: none;
       border-radius: 10px;
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 700;
       cursor: pointer;
     }
-    button:hover { background: #1d4ed8; }
-    button:disabled { background: #93c5fd; cursor: not-allowed; }
+    button[type="submit"]:hover { background: #1d4ed8; }
+    button[type="submit"]:disabled { background: #93c5fd; cursor: not-allowed; }
     #status {
       margin-top: 20px;
-      padding: 14px;
-      background: #e8f7ec;
-      color: #1e6b34;
+      padding: 16px;
+      background: #eef4ff;
+      color: #1e40af;
       border-radius: 8px;
       font-weight: 600;
     }
     footer {
       background: #111827;
       color: #d1d5db;
-      padding: 32px 40px;
+      padding: 40px 110px;
       text-align: center;
       font-size: 14px;
     }
-    footer .logo { color: #fff; margin-bottom: 8px; }
+    footer .logo { color: #fff; margin-bottom: 10px; font-size: 24px; }
+    footer .logo span { color: #60a5fa; }
   </style>
 </head>
 <body>
@@ -125,19 +128,19 @@
         <select id="category" required>
           <option value="Electricity">Electricity</option>
           <option value="Water">Water</option>
-          <option value="Internet">Internet</option>
+          <option value="Internet / Wi-Fi">Internet / Wi-Fi</option>
           <option value="Cleaning">Cleaning</option>
           <option value="Other">Other</option>
         </select>
 
         <label for="details">Complaint Details</label>
-        <textarea id="details" rows="6" required></textarea>
+        <textarea id="details" required></textarea>
 
         <button type="submit" id="submitBtn">Submit Complaint</button>
       </form>
 
       <div id="status" hidden>
-        Your complaint has been sent to the authority of management.
+        Your complaint is registered and sent to the hostel management.
       </div>
     </div>
   </main>
